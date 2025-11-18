@@ -5,7 +5,7 @@ type AdminLayoutProps = {
     children?: React.ReactNode;
 }
 
-const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
+const BeforeLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     return (
         <>
             <div className="min-h-screen flex flex-col">
@@ -17,4 +17,4 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     )
 }
 
-export default AdminLayout;
+export default BeforeLayout;
