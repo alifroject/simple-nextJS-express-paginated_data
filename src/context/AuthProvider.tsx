@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             .then((u) => {
                 console.log("RAW BACKEND RESPONSE:", u);
                 setUser(u);
-            })
+            })  
             .catch(() => setUser(null))
             .finally(() => setLoading(false));
     }, []);
