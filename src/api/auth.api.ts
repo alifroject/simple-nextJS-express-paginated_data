@@ -1,9 +1,8 @@
 import type { LoginResponse } from "../types/auth.type";
 
-const API_URL = import.meta.env.API_URL;
 
 export const login = async (email: string, password: string): Promise<LoginResponse> => {
-    const response = await fetch(`${API_URL}/auth/login`, {
+    const response = await fetch("http://localhost:8080/admin/login", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -16,5 +15,23 @@ export const login = async (email: string, password: string): Promise<LoginRespo
     }
     const data: LoginResponse = await response.json();
     return data;
+}
+
+export const getCurrentUser = async () => {
+    const response = await fetch("http://localhost:8080/admin/me", {
+        method: "GET",
+        credentials: "include",
+    });
+    if (!response.ok) throw new Error("Not logged in")
+    return response.json();
+}
+
+export const logout = async () => {
+     const response = await fetch("http://localhost:8080/admin/logout", {
+        method: 'POST',
+        credentials: 'include',
+    });
+    if (!response.ok) throw new Error('Logout failed');
+    return response.json();
 }
 
