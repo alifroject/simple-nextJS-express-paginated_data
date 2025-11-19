@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../../api/auth.api";
 import { useAuthStore } from "../../services/auth.store";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -8,12 +9,15 @@ const LoginPage = () => {
   const [error, setError] = useState<string | null>(null);
   const { setUser } = useAuthStore();
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const userData = await login(email, password);
+      const userData = await login({email, password});
       setUser(userData);
       setError(null);
+      navigate("/dashboard")
     } catch (err: any) {
       console.error(err);
       setError("Invalid email or password");

@@ -1,5 +1,11 @@
+import { useAuthStore } from "../../services/auth.store";
 
 const Dashboard = () => {
+
+  const { user } = useAuthStore();
+
+  // console.log(user?.FirstName)
+
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       {/* Header */}
@@ -8,7 +14,9 @@ const Dashboard = () => {
           Dashboard
         </h1>
         <p className="text-gray-600 mt-1">
-          Welcome! Here is a quick overview of your app.
+          Welcome <span className="text-green-700">
+            {user?.FirstName}
+          </span> ! Here is a quick overview of your app.
         </p>
       </header>
 

@@ -9,10 +9,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         getCurrentUser()
-            .then((user) => setUser(user))
+            .then((u) => {
+                console.log("RAW BACKEND RESPONSE:", u);
+                setUser(u);
+            })
             .catch(() => setUser(null))
             .finally(() => setLoading(false));
     }, []);
+
     if (loading) return <div>Loading...</div>;
     return <>{children}</>;
 }

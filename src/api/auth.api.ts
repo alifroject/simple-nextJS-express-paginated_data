@@ -1,7 +1,7 @@
-import type { LoginResponse } from "../types/auth.type";
+import type { LoginInput, LoginResponse } from "../types/auth.type";
 
 
-export const login = async (email: string, password: string): Promise<LoginResponse> => {
+export const login = async ({ email, password }: LoginInput): Promise<LoginResponse> => {
     const response = await fetch("http://localhost:8080/admin/login", {
         method: 'POST',
         headers: {
@@ -27,7 +27,7 @@ export const getCurrentUser = async () => {
 }
 
 export const logout = async () => {
-     const response = await fetch("http://localhost:8080/admin/logout", {
+    const response = await fetch("http://localhost:8080/admin/logout", {
         method: 'POST',
         credentials: 'include',
     });
