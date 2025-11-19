@@ -4,6 +4,7 @@ import BeforeLayout from "../layouts/BeforeLayout";
 import LoginPage from "../pages/auth/loginPage";
 import Dashboard from "../pages/dashboard/dashboard_";
 import NotFoundPage from "../pages/notFound/Notfound"; // optional custom 404
+import ProtectedRoute from "../components/private/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +18,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "dashboard",  // accessible at /dashboard
-        element: <Dashboard />
+        element:
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
       }
     ],
   }
