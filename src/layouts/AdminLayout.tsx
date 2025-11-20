@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import SidebarMobile from "./SidebarMobile";
+
 
 type AdminLayoutProps = {
     children?: React.ReactNode;
@@ -15,7 +17,14 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
             <div className="flex">
                 <div className="hidden md:block">
 
-                    <Sidebar isOpen={isSidebarOpen} />
+                    <Sidebar
+                        isOpen={isSidebarOpen}
+                    />
+                </div>
+                <div className="md:hidden">
+
+                    <SidebarMobile isOpen={isSidebarOpen}
+                        onClose={() => setSidebarOpen(false)} />
                 </div>
 
                 {/* Right section */}
